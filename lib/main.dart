@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:aditya_taparia/components/loading.dart';
 import 'package:aditya_taparia/screens/mobile/mobile_main.dart';
 import 'package:aditya_taparia/screens/desktop_tablet/desktop_tablet_main.dart';
 import 'package:flutter/gestures.dart';
@@ -22,8 +24,35 @@ class DragScroll extends MaterialScrollBehavior {
 // Global JSON data
 Map<String, dynamic> data = {};
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    setState(() {
+      isLoading = true;
+    });
+
+    Timer(const Duration(seconds: 5), () {
+      setState(() {
+        isLoading = false;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -40,10 +69,14 @@ class MyApp extends StatelessWidget {
         fontFamily: 'VarelaRound',
       ),
       debugShowCheckedModeBanner: false,
-      home: Responsive(
-        desktop: DesktopTabletMain(data: data, isLargeScreen: isLargeScreen),
-        mobile: MobileMain(data: data),
-      ),
+      home: isLoading
+          ? const Loading(
+              text: 'Hello! I\'m Aditya Taparia...',
+            )
+          : Responsive(
+              desktop: DesktopTabletMain(data: data, isLargeScreen: isLargeScreen),
+              mobile: MobileMain(data: data),
+            ),
     );
   }
 }
@@ -59,7 +92,6 @@ class Responsive extends StatefulWidget {
 
 class _ResponsiveState extends State<Responsive> {
   bool isLoading = true;
-
   // Load JSON data
   load() {
     setState(() {
@@ -111,7 +143,7 @@ class _ResponsiveState extends State<Responsive> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       if (isLoading) {
-        return const Center(child: CircularProgressIndicator());
+        return const Loading(text: 'Loading Data...', isAnimate: false);
       } else {
         if (constraints.maxWidth >= 650) {
           return widget.desktop;
