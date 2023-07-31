@@ -332,7 +332,7 @@ class ResumeDownload extends StatelessWidget {
                     style: TextStyle(color: Colors.black),
                   ),
                   isFloating: true);
-              downloadFile('https://github.com/aditya-taparia/aditya-taparia.github.io/blob/main/assets/Resume.pdf');
+              downloadFile('https://aditya-taparia.github.io/assets/assets/Resume.pdf');
             },
             label: const Text(
               'Download Resume',

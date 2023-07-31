@@ -181,7 +181,7 @@ class _AboutState extends State<About> {
                         style: TextStyle(color: Colors.black),
                       ),
                       isFloating: true);
-                  downloadFile('https://github.com/aditya-taparia/aditya-taparia.github.io/blob/main/assets/Resume.pdf');
+                  downloadFile('https://aditya-taparia.github.io/assets/assets/Resume.pdf');
                 },
                 style: ButtonStyle(
                   padding: MaterialStateProperty.all(
