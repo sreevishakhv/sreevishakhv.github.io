@@ -9,7 +9,6 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -151,9 +150,11 @@ class _MobileMainState extends State<MobileMain> {
         elevation: 0,
         actions: [
           IconButton.filledTonal(
-            icon: const Icon(
-              Symbols.info_i_rounded,
-              size: 20,
+            icon: const Center(
+              child: Icon(
+                Icons.info_outline_rounded,
+                size: 20,
+              ),
             ),
             tooltip: 'Information',
             onPressed: () {
