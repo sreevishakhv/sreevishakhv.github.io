@@ -206,7 +206,7 @@ class _ExpCardState extends State<ExpCard> {
                         borderRadius: BorderRadius.circular(10.0),
                         image: DecorationImage(
                           image: AssetImage(
-                            widget.img,
+                            'assets/${widget.img}',
                           ),
                           fit: BoxFit.cover,
                           alignment: Alignment.center,

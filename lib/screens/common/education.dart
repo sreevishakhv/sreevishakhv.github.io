@@ -102,7 +102,7 @@ class _EduCardState extends State<EduCard> {
                         borderRadius: BorderRadius.circular(10.0),
                         image: DecorationImage(
                           image: AssetImage(
-                            widget.logo,
+                            'assets/${widget.logo}',
                           ),
                           fit: BoxFit.cover,
                           alignment: Alignment.center,
