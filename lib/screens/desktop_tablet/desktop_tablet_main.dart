@@ -333,7 +333,7 @@ class ResumeDownload extends StatelessWidget {
                     style: TextStyle(color: Colors.black),
                   ),
                   isFloating: true);
-              downloadFile('assets/Resume.pdf');
+              downloadFile('../assets/Resume.pdf');
             },
             label: const Text(
               'Download Resume',
