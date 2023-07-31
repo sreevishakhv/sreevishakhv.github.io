@@ -313,7 +313,7 @@ class _MobileMainState extends State<MobileMain> {
               style: TextStyle(color: Colors.black),
             ),
           );
-          downloadFile('assets/Resume.pdf');
+          downloadFile('https://github.com/aditya-taparia/aditya-taparia.github.io/blob/main/assets/Resume.pdf');
         },
         tooltip: 'Resume',
         extendedPadding: const EdgeInsets.only(left: 16, right: 16),

@@ -203,7 +203,6 @@ class _DesktopTabletMainState extends State<DesktopTabletMain> {
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                       ),
-                      // child: screens[_index],
                       child: PageTransitionSwitcher(
                         duration: const Duration(seconds: 1),
                         transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
@@ -333,7 +332,7 @@ class ResumeDownload extends StatelessWidget {
                     style: TextStyle(color: Colors.black),
                   ),
                   isFloating: true);
-              downloadFile('../assets/Resume.pdf');
+              downloadFile('https://github.com/aditya-taparia/aditya-taparia.github.io/blob/main/assets/Resume.pdf');
             },
             label: const Text(
               'Download Resume',

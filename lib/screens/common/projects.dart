@@ -89,7 +89,7 @@ class _ProjectsState extends State<Projects> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
                   'Featured Projects:',
@@ -105,7 +105,7 @@ class _ProjectsState extends State<Projects> {
                     launchUrl(Uri.parse('https://github.com/aditya-taparia?tab=repositories'));
                   },
                   child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('All Projects'),
