@@ -9,6 +9,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -151,7 +152,7 @@ class _MobileMainState extends State<MobileMain> {
         actions: [
           IconButton.filledTonal(
             icon: const Icon(
-              Icons.info_outline_rounded,
+              Symbols.info_i_rounded,
               size: 20,
             ),
             tooltip: 'Information',
