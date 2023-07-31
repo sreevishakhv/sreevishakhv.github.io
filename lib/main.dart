@@ -67,17 +67,31 @@ class _ResponsiveState extends State<Responsive> {
     });
     rootBundle.loadString('assets/data.json').then((value) {
       setState(() {
-        isLoading = false;
         data = json.decode(value);
       });
     }).then((value) {
+      // Preloading my image
+      precacheImage(const AssetImage('assets/myself.jpg'), context);
+
+      // Preload images of education
       for (int i = 0; i < data["education"].length; i++) {
-        precacheImage(AssetImage(data["education"][i]["logo"]), context);
+        precacheImage(AssetImage('assets/${data["education"][i]["logo"]}'), context);
       }
+
+      // Preload images of projects
       for (int i = 0; i < data['project'].length; i++) {
         precacheImage(
             AssetImage(data['project'][i]['image'].isNotEmpty ? 'assets/${data['project'][i]['image']}' : 'assets/card graphic.png'), context);
       }
+
+      // Preload images of experience
+      for (int i = 0; i < data['experience'].length; i++) {
+        precacheImage(AssetImage('assets/${data['experience'][i]['image']}'), context);
+      }
+    }).then((value) {
+      setState(() {
+        isLoading = false;
+      });
     });
   }
 

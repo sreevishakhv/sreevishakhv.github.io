@@ -201,15 +201,19 @@ class _ExpCardState extends State<ExpCard> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(
-                        widget.img,
-                        height: 60,
-                        width: 60,
-                        fit: BoxFit.scaleDown,
-                        alignment: Alignment.center,
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        image: DecorationImage(
+                          image: AssetImage(
+                            widget.img,
+                          ),
+                          fit: BoxFit.cover,
+                          alignment: Alignment.center,
+                        ),
                       ),
+                      width: 60,
+                      height: 60,
                     ),
                     const SizedBox(width: 8),
                     Expanded(
