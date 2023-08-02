@@ -78,7 +78,7 @@ class _ProjectsState extends State<Projects> {
       physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(
@@ -94,7 +94,7 @@ class _ProjectsState extends State<Projects> {
                 const Text(
                   'Featured Projects:',
                   style: TextStyle(
-                    fontSize: 22.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -228,7 +228,7 @@ class _ProjectsState extends State<Projects> {
             child: Text(
               'Publications:',
               style: TextStyle(
-                fontSize: 22.0,
+                fontSize: 18.0,
                 fontWeight: FontWeight.w500,
               ),
             ),

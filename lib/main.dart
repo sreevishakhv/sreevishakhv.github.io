@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       isLoading = true;
     });
 
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       setState(() {
         isLoading = false;
       });
@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: isLoading
           ? const Loading(
-              text: 'Hello! I\'m Aditya Taparia...',
+              text: 'Hello! I\'m Aditya...',
             )
           : Responsive(
               desktop: DesktopTabletMain(data: data, isLargeScreen: isLargeScreen),
@@ -143,7 +143,7 @@ class _ResponsiveState extends State<Responsive> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       if (isLoading) {
-        return const Loading(text: 'Loading Data...', isAnimate: false);
+        return const Loading(text: 'Hello! I\'m Aditya...', isAnimate: false);
       } else {
         if (constraints.maxWidth >= 650) {
           return widget.desktop;
