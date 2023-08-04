@@ -126,8 +126,8 @@ class _ProjectsState extends State<Projects> {
             ),
             child: ClipRRect(
               borderRadius: !widget.smallScreen ? BorderRadius.circular(40.0) : BorderRadius.zero,
-              child: SizedBox(
-                height: 320,
+              child: LimitedBox(
+                maxHeight: 330.0,
                 child: ScrollablePositionedList.builder(
                   itemCount: widget.data['project'].length,
                   shrinkWrap: true,
@@ -337,464 +337,464 @@ class _ProjectCardState extends State<ProjectCard> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Image
-                Container(
-                  height: 160,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                    color: Theme.of(context).canvasColor,
-                    image: DecorationImage(
-                      image: AssetImage(widget.data['image'].isNotEmpty ? 'assets/${widget.data['image']}' : 'assets/card graphic.png'),
-                      fit: BoxFit.cover,
-                      alignment: widget.data['image'].isNotEmpty ? Alignment.topCenter : Alignment.center,
-                      colorFilter: const ColorFilter.mode(
-                        Colors.black12,
-                        BlendMode.darken,
-                      ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Image
+              Container(
+                height: 160,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  color: Theme.of(context).canvasColor,
+                  image: DecorationImage(
+                    image: AssetImage(widget.data['image'].isNotEmpty ? 'assets/${widget.data['image']}' : 'assets/card graphic.png'),
+                    fit: BoxFit.cover,
+                    alignment: widget.data['image'].isNotEmpty ? Alignment.topCenter : Alignment.center,
+                    colorFilter: const ColorFilter.mode(
+                      Colors.black12,
+                      BlendMode.darken,
                     ),
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    widget.data['name'],
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    ),
-                    textAlign: TextAlign.justify,
+              ),
+              ListTile(
+                title: Text(
+                  widget.data['name'],
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
-                  subtitle: Text(
-                    widget.data['duration'],
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    textAlign: TextAlign.justify,
-                  ),
-                  isThreeLine: true,
+                  textAlign: TextAlign.justify,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 8.0,
+                subtitle: Text(
+                  widget.data['duration'],
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      FilledButton(
-                        onPressed: () {
-                          widget.smallScreen
-                              ? Navigator.of(context).push(
-                                  PageRouteBuilder(
-                                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                      return SlideTransition(
-                                        position: Tween<Offset>(
-                                          begin: const Offset(1.0, 0.0),
-                                          end: Offset.zero,
-                                        ).animate(animation),
-                                        child: child,
-                                      );
-                                    },
-                                    pageBuilder: (context, animation, secondaryAnimation) {
-                                      return Scaffold(
-                                        appBar: AppBar(
-                                          title: const Text('Project Details'),
-                                          elevation: 0,
-                                          centerTitle: true,
-                                          leading: IconButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            icon: Icon(
-                                              Icons.close_rounded,
-                                              color: Theme.of(context).colorScheme.onPrimaryContainer,
-                                            ),
-                                          ),
-                                        ),
-                                        body: SingleChildScrollView(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(16.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  'Project Name: ',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'VarelaRound',
-                                                    color: Theme.of(context).colorScheme.primary,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 2.0),
-                                                Text(
-                                                  widget.data['name'],
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily: 'VarelaRound',
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 12.0),
-                                                Text(
-                                                  'Duration: ',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'VarelaRound',
-                                                    color: Theme.of(context).colorScheme.primary,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 2.0),
-                                                Text(
-                                                  widget.data['duration'],
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily: 'VarelaRound',
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 12.0),
-                                                Text(
-                                                  'Description: ',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'VarelaRound',
-                                                    color: Theme.of(context).colorScheme.primary,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 2.0),
-                                                Text(
-                                                  widget.data['description'],
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily: 'VarelaRound',
-                                                  ),
-                                                  textAlign: TextAlign.justify,
-                                                ),
-                                                const SizedBox(height: 12.0),
-                                                Text(
-                                                  'Tags: ',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'VarelaRound',
-                                                    color: Theme.of(context).colorScheme.primary,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 4.0),
-                                                Wrap(
-                                                  spacing: 4.0,
-                                                  runSpacing: 4.0,
-                                                  children: List.generate(
-                                                    widget.data['tag'].length,
-                                                    (index) => Chip(
-                                                      labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0),
-                                                      label: Text(
-                                                        widget.data['tag'][index],
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight: FontWeight.w500,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                      backgroundColor: Colors.green[100],
-                                                      side: BorderSide.none,
-                                                      elevation: 0,
-                                                      shadowColor: Colors.transparent,
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 50.0),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        floatingActionButton: widget.data['github_link'].isEmpty
-                                            ? Container(
-                                                padding: const EdgeInsets.symmetric(
-                                                  horizontal: 32.0,
-                                                  vertical: 8.0,
-                                                ),
-                                                // width: MediaQuery.of(context).size.width * 0.8,
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(4.0),
-                                                  color: Colors.blue[100],
-                                                ),
-                                                child: const Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.info_outline_rounded,
-                                                      size: 18,
-                                                    ),
-                                                    SizedBox(width: 8.0),
-                                                    Text(
-                                                      'This project is not yet open sourced.',
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight: FontWeight.w500,
-                                                        fontFamily: 'VarelaRound',
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              )
-                                            : FloatingActionButton.extended(
-                                                onPressed: () {
-                                                  launchUrl(Uri.parse(widget.data['github_link']));
-                                                },
-                                                label: const Text(
-                                                  'Open Project',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                icon: const Icon(Icons.open_in_new_rounded),
-                                                backgroundColor: Colors.blue[100],
-                                              ),
-                                        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-                                      );
-                                    },
-                                  ),
-                                )
-                              : showGeneralDialog<String>(
-                                  context: context,
-                                  transitionBuilder: (context, a1, a2, child) {
-                                    var curve = Curves.easeInOut.transform(a1.value);
-                                    return Transform.scale(
-                                      scale: curve,
-                                      child: Opacity(
-                                        opacity: curve,
-                                        child: child,
-                                      ),
+                  textAlign: TextAlign.justify,
+                ),
+                isThreeLine: true,
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FilledButton(
+                      onPressed: () {
+                        widget.smallScreen
+                            ? Navigator.of(context).push(
+                                PageRouteBuilder(
+                                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                    return SlideTransition(
+                                      position: Tween<Offset>(
+                                        begin: const Offset(1.0, 0.0),
+                                        end: Offset.zero,
+                                      ).animate(animation),
+                                      child: child,
                                     );
                                   },
-                                  transitionDuration: const Duration(milliseconds: 300),
-                                  pageBuilder: (context, a1, a2) => Dialog(
-                                    surfaceTintColor: Colors.grey[200],
-                                    child: Container(
-                                      padding: const EdgeInsets.all(24.0),
-                                      width: widget.smallScreen ? MediaQuery.of(context).size.width * 0.8 : 600,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          // Center Title with Close Button
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                  pageBuilder: (context, animation, secondaryAnimation) {
+                                    return Scaffold(
+                                      appBar: AppBar(
+                                        title: const Text('Project Details'),
+                                        elevation: 0,
+                                        centerTitle: true,
+                                        leading: IconButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          icon: Icon(
+                                            Icons.close_rounded,
+                                            color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                          ),
+                                        ),
+                                      ),
+                                      body: SingleChildScrollView(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(16.0),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              const Text(
-                                                'Project Details',
+                                              Text(
+                                                'Project Name: ',
                                                 style: TextStyle(
-                                                  fontSize: 18,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.w600,
+                                                  fontFamily: 'VarelaRound',
+                                                  color: Theme.of(context).colorScheme.primary,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 2.0),
+                                              Text(
+                                                widget.data['name'],
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'VarelaRound',
+                                                ),
+                                              ),
+                                              const SizedBox(height: 12.0),
+                                              Text(
+                                                'Duration: ',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'VarelaRound',
+                                                  color: Theme.of(context).colorScheme.primary,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 2.0),
+                                              Text(
+                                                widget.data['duration'],
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'VarelaRound',
+                                                ),
+                                              ),
+                                              const SizedBox(height: 12.0),
+                                              Text(
+                                                'Description: ',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'VarelaRound',
+                                                  color: Theme.of(context).colorScheme.primary,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 2.0),
+                                              Text(
+                                                widget.data['description'],
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'VarelaRound',
                                                 ),
                                                 textAlign: TextAlign.justify,
                                               ),
-                                              IconButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                icon: Icon(
-                                                  Icons.close_rounded,
-                                                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                              const SizedBox(height: 12.0),
+                                              Text(
+                                                'Tags: ',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'VarelaRound',
+                                                  color: Theme.of(context).colorScheme.primary,
                                                 ),
                                               ),
-                                            ],
-                                          ),
-
-                                          const SizedBox(height: 24.0),
-                                          Text(
-                                            'Project Name: ',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'VarelaRound',
-                                              color: Theme.of(context).colorScheme.primary,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2.0),
-                                          Text(
-                                            widget.data['name'],
-                                            style: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'VarelaRound',
-                                            ),
-                                          ),
-                                          const SizedBox(height: 12.0),
-                                          Text(
-                                            'Duration: ',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'VarelaRound',
-                                              color: Theme.of(context).colorScheme.primary,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2.0),
-                                          Text(
-                                            widget.data['duration'],
-                                            style: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'VarelaRound',
-                                            ),
-                                          ),
-                                          const SizedBox(height: 12.0),
-                                          Text(
-                                            'Description: ',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'VarelaRound',
-                                              color: Theme.of(context).colorScheme.primary,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2.0),
-                                          Text(
-                                            widget.data['description'],
-                                            style: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'VarelaRound',
-                                            ),
-                                            textAlign: TextAlign.justify,
-                                          ),
-                                          const SizedBox(height: 16.0),
-                                          Wrap(
-                                            spacing: 4.0,
-                                            runSpacing: 4.0,
-                                            children: List.generate(
-                                              widget.data['tag'].length,
-                                              (index) => Chip(
-                                                labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0),
-                                                label: Text(
-                                                  widget.data['tag'][index],
-                                                  style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black,
-                                                  ),
-                                                ),
-                                                backgroundColor: Colors.green[100],
-                                                side: BorderSide.none,
-                                                elevation: 0,
-                                                shadowColor: Colors.transparent,
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(height: 20.0),
-                                          Row(
-                                            mainAxisAlignment: widget.data['github_link'].isEmpty ? MainAxisAlignment.center : MainAxisAlignment.end,
-                                            children: [
-                                              widget.data['github_link'].isNotEmpty
-                                                  ? FilledButton(
-                                                      onPressed: () {
-                                                        launchUrl(Uri.parse(widget.data['github_link']));
-                                                      },
-                                                      child: const Text('Open Project'),
-                                                    )
-                                                  : Container(
-                                                      padding: const EdgeInsets.symmetric(
-                                                        horizontal: 32.0,
-                                                        vertical: 8.0,
-                                                      ),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(4.0),
-                                                        color: Colors.blue[100],
-                                                      ),
-                                                      child: const Row(
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        mainAxisAlignment: MainAxisAlignment.center,
-                                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                                        children: [
-                                                          Icon(
-                                                            Icons.info_outline_rounded,
-                                                            size: 18,
-                                                          ),
-                                                          SizedBox(width: 8.0),
-                                                          Text(
-                                                            'This project is not yet open sourced.',
-                                                            style: TextStyle(
-                                                              fontSize: 14,
-                                                              fontWeight: FontWeight.w500,
-                                                              fontFamily: 'VarelaRound',
-                                                            ),
-                                                          ),
-                                                        ],
+                                              const SizedBox(height: 4.0),
+                                              Wrap(
+                                                spacing: 4.0,
+                                                runSpacing: 4.0,
+                                                children: List.generate(
+                                                  widget.data['tag'].length,
+                                                  (index) => Chip(
+                                                    labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0),
+                                                    label: Text(
+                                                      widget.data['tag'][index],
+                                                      style: const TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight: FontWeight.w500,
+                                                        color: Colors.black,
                                                       ),
                                                     ),
+                                                    backgroundColor: Colors.green[100],
+                                                    side: BorderSide.none,
+                                                    elevation: 0,
+                                                    shadowColor: Colors.transparent,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 50.0),
                                             ],
                                           ),
-                                        ],
+                                        ),
                                       ),
+                                      floatingActionButton: widget.data['github_link'].isEmpty
+                                          ? Container(
+                                              padding: const EdgeInsets.symmetric(
+                                                horizontal: 32.0,
+                                                vertical: 8.0,
+                                              ),
+                                              // width: MediaQuery.of(context).size.width * 0.8,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(4.0),
+                                                color: Colors.blue[100],
+                                              ),
+                                              child: const Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Icon(
+                                                    Icons.info_outline_rounded,
+                                                    size: 18,
+                                                  ),
+                                                  SizedBox(width: 8.0),
+                                                  Text(
+                                                    'This project is not yet open sourced.',
+                                                    style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontFamily: 'VarelaRound',
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          : FloatingActionButton.extended(
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(widget.data['github_link']));
+                                              },
+                                              label: const Text(
+                                                'Open Project',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              icon: const Icon(Icons.open_in_new_rounded),
+                                              backgroundColor: Colors.blue[100],
+                                            ),
+                                      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+                                    );
+                                  },
+                                ),
+                              )
+                            : showGeneralDialog<String>(
+                                context: context,
+                                transitionBuilder: (context, a1, a2, child) {
+                                  var curve = Curves.easeInOut.transform(a1.value);
+                                  return Transform.scale(
+                                    scale: curve,
+                                    child: Opacity(
+                                      opacity: curve,
+                                      child: child,
+                                    ),
+                                  );
+                                },
+                                transitionDuration: const Duration(milliseconds: 300),
+                                pageBuilder: (context, a1, a2) => Dialog(
+                                  surfaceTintColor: Colors.grey[200],
+                                  child: Container(
+                                    padding: const EdgeInsets.all(24.0),
+                                    width: widget.smallScreen ? MediaQuery.of(context).size.width * 0.8 : 600,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        // Center Title with Close Button
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              'Project Details',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              textAlign: TextAlign.justify,
+                                            ),
+                                            IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: Icon(
+                                                Icons.close_rounded,
+                                                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+
+                                        const SizedBox(height: 24.0),
+                                        Text(
+                                          'Project Name: ',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'VarelaRound',
+                                            color: Theme.of(context).colorScheme.primary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 2.0),
+                                        Text(
+                                          widget.data['name'],
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'VarelaRound',
+                                          ),
+                                        ),
+                                        const SizedBox(height: 12.0),
+                                        Text(
+                                          'Duration: ',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'VarelaRound',
+                                            color: Theme.of(context).colorScheme.primary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 2.0),
+                                        Text(
+                                          widget.data['duration'],
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'VarelaRound',
+                                          ),
+                                        ),
+                                        const SizedBox(height: 12.0),
+                                        Text(
+                                          'Description: ',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'VarelaRound',
+                                            color: Theme.of(context).colorScheme.primary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 2.0),
+                                        Text(
+                                          widget.data['description'],
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'VarelaRound',
+                                          ),
+                                          textAlign: TextAlign.justify,
+                                        ),
+                                        const SizedBox(height: 16.0),
+                                        Wrap(
+                                          spacing: 4.0,
+                                          runSpacing: 4.0,
+                                          children: List.generate(
+                                            widget.data['tag'].length,
+                                            (index) => Chip(
+                                              labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0),
+                                              label: Text(
+                                                widget.data['tag'][index],
+                                                style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              backgroundColor: Colors.green[100],
+                                              side: BorderSide.none,
+                                              elevation: 0,
+                                              shadowColor: Colors.transparent,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 20.0),
+                                        Row(
+                                          mainAxisAlignment: widget.data['github_link'].isEmpty ? MainAxisAlignment.center : MainAxisAlignment.end,
+                                          children: [
+                                            widget.data['github_link'].isNotEmpty
+                                                ? FilledButton(
+                                                    onPressed: () {
+                                                      launchUrl(Uri.parse(widget.data['github_link']));
+                                                    },
+                                                    child: const Text('Open Project'),
+                                                  )
+                                                : Container(
+                                                    padding: const EdgeInsets.symmetric(
+                                                      horizontal: 32.0,
+                                                      vertical: 8.0,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(4.0),
+                                                      color: Colors.blue[100],
+                                                    ),
+                                                    child: const Row(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.info_outline_rounded,
+                                                          size: 18,
+                                                        ),
+                                                        SizedBox(width: 8.0),
+                                                        Text(
+                                                          'This project is not yet open sourced.',
+                                                          style: TextStyle(
+                                                            fontSize: 14,
+                                                            fontWeight: FontWeight.w500,
+                                                            fontFamily: 'VarelaRound',
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                );
-                        },
-                        child: const Text('Details'),
-                      ),
-                      const SizedBox(width: 8.0),
-                      FilledButton.tonal(
-                        onPressed: () {
-                          if (widget.data['github_link'].isNotEmpty) {
-                            launchUrl(Uri.parse(widget.data['github_link']));
-                          } else {
-                            snackbar(
-                                context,
-                                const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.lock_rounded,
-                                      size: 16,
-                                      color: Colors.black,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      'Project is not yet public!',
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                  ],
                                 ),
-                                isFloating: !widget.smallScreen);
-                          }
-                        },
-                        style: FilledButton.styleFrom(
-                          backgroundColor: Colors.blue[100],
-                          textStyle: const TextStyle(
-                            color: Colors.black,
-                          ),
+                              );
+                      },
+                      child: const Text('Details'),
+                    ),
+                    const SizedBox(width: 8.0),
+                    FilledButton.tonal(
+                      onPressed: () {
+                        if (widget.data['github_link'].isNotEmpty) {
+                          launchUrl(Uri.parse(widget.data['github_link']));
+                        } else {
+                          snackbar(
+                              context,
+                              const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.lock_rounded,
+                                    size: 16,
+                                    color: Colors.black,
+                                  ),
+                                  SizedBox(width: 8),
+                                  Text(
+                                    'Project is not yet public!',
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              isFloating: !widget.smallScreen);
+                        }
+                      },
+                      style: FilledButton.styleFrom(
+                        backgroundColor: Colors.blue[100],
+                        textStyle: const TextStyle(
+                          color: Colors.black,
                         ),
-                        child: const Text('Code'),
                       ),
-                    ],
-                  ),
+                      child: const Text('Code'),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
