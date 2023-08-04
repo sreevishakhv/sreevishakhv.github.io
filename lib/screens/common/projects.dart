@@ -127,7 +127,7 @@ class _ProjectsState extends State<Projects> {
             child: ClipRRect(
               borderRadius: !widget.smallScreen ? BorderRadius.circular(40.0) : BorderRadius.zero,
               child: LimitedBox(
-                maxHeight: 330.0,
+                maxHeight: 340.0,
                 child: ScrollablePositionedList.builder(
                   itemCount: widget.data['project'].length,
                   shrinkWrap: true,
@@ -380,7 +380,6 @@ class _ProjectCardState extends State<ProjectCard> {
                   ),
                   textAlign: TextAlign.justify,
                 ),
-                isThreeLine: true,
               ),
               const Spacer(),
               Padding(
@@ -390,7 +389,7 @@ class _ProjectCardState extends State<ProjectCard> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     FilledButton(
                       onPressed: () {
