@@ -322,7 +322,7 @@ class _MobileMainState extends State<MobileMain> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(Icons.download_rounded),
+            const Icon(Icons.file_download_rounded),
             isExtended ? const SizedBox(width: 10) : const SizedBox(width: 0),
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 500),
