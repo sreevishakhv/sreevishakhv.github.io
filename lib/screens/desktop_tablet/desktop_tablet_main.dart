@@ -135,172 +135,89 @@ class _DesktopTabletMainState extends State<DesktopTabletMain> {
           const SizedBox(width: 8),
         ],
       ),
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Row(
-              children: [
-                NavigationRail(
-                  selectedIndex: _index,
-                  extended: extended,
-                  onDestinationSelected: (int i) {
-                    setState(() {
-                      _index = i;
-                    });
-                    _saveIndex(i);
-                  },
-                  backgroundColor: const Color(0xfff0f5fa),
-                  indicatorColor: Theme.of(context).colorScheme.primary,
-                  indicatorShape: const StarBorder(
-                    valleyRounding: 0.2,
-                    innerRadiusRatio: 0.8,
-                    pointRounding: 0.5,
-                    points: 10,
-                  ),
-                  minWidth: 60,
-                  minExtendedWidth: widget.isLargeScreen
-                      ? (MediaQuery.of(context).size.width + 1200) / 10 > 250
-                          ? 250
-                          : (MediaQuery.of(context).size.width + 1200) / 10
-                      : 220,
-                  labelType: !extended ? NavigationRailLabelType.none : null,
-                  selectedLabelTextStyle: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    fontSize: 14,
-                    fontFamily: 'VarelaRound',
-                    fontWeight: FontWeight.bold,
-                  ),
-                  unselectedLabelTextStyle: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    fontSize: 14,
-                    fontFamily: 'VarelaRound',
-                  ),
-                  selectedIconTheme: IconThemeData(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    size: 18,
-                  ),
-                  unselectedIconTheme: IconThemeData(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    size: 18,
-                  ),
-                  destinations: destinations,
-                  trailing: widget.isLargeScreen
-                      ? _index == 0
-                          ? null
-                          : ResumeDownload(extended: extended)
-                      : ResumeDownload(extended: extended),
-                ),
-                Expanded(
-                  child: Container(
-                    height: double.infinity,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                      ),
-                      color: Colors.white,
-                    ),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                      ),
-                      child: PageTransitionSwitcher(
-                        duration: const Duration(seconds: 1),
-                        transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
-                          return SharedAxisTransition(
-                            animation: primaryAnimation,
-                            secondaryAnimation: secondaryAnimation,
-                            transitionType: SharedAxisTransitionType.horizontal,
-                            child: child,
-                          );
-                        },
-                        child: screens[_index],
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 15,
-            right: 15,
-            child: IconButton.filled(
-              icon: const Center(
-                child: Icon(
-                  Icons.info_outline_rounded,
-                  size: 20,
-                ),
-              ),
-              tooltip: 'Information',
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      elevation: 0,
-                      backgroundColor: Colors.grey.shade100,
-                      title: ListTile(
-                        // Website Logo
-                        leading: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
-                            'assets/logo.png',
-                            width: 50,
-                            height: 50,
-                          ),
-                        ),
-                        title: const Text(
-                          'Aditya Taparia',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        subtitle: const Text(
-                          'Copyright © 2023 Aditya Taparia',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                      content: const SizedBox(
-                        width: 400,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'This website is maintained, designed and developed by Aditya Taparia. This website is built using Flutter Web and hosted on Github Pages.',
-                              textAlign: TextAlign.justify,
-                            ),
-                          ],
-                        ),
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            showLicensePage(
-                              context: context,
-                              applicationName: 'Aditya Taparia',
-                              applicationVersion: '1.0.0',
-                              applicationIcon: Image.asset(
-                                'assets/logo.png',
-                                width: 50,
-                                height: 50,
-                              ),
-                              applicationLegalese: 'Copyright © 2023 Aditya Taparia',
-                            );
-                          },
-                          child: const Text('View Licenses'),
-                        ),
-                      ],
-                    );
-                  },
-                );
+      body: SafeArea(
+        child: Row(
+          children: [
+            NavigationRail(
+              selectedIndex: _index,
+              extended: extended,
+              onDestinationSelected: (int i) {
+                setState(() {
+                  _index = i;
+                });
+                _saveIndex(i);
               },
-              constraints: const BoxConstraints(
-                minWidth: 10,
-                minHeight: 10,
+              backgroundColor: const Color(0xfff0f5fa),
+              indicatorColor: Theme.of(context).colorScheme.primary,
+              indicatorShape: const StarBorder(
+                valleyRounding: 0.2,
+                innerRadiusRatio: 0.8,
+                pointRounding: 0.5,
+                points: 10,
               ),
+              minWidth: 60,
+              minExtendedWidth: widget.isLargeScreen
+                  ? (MediaQuery.of(context).size.width + 1200) / 10 > 250
+                      ? 250
+                      : (MediaQuery.of(context).size.width + 1200) / 10
+                  : 220,
+              labelType: !extended ? NavigationRailLabelType.none : null,
+              selectedLabelTextStyle: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                fontSize: 14,
+                fontFamily: 'VarelaRound',
+                fontWeight: FontWeight.bold,
+              ),
+              unselectedLabelTextStyle: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                fontSize: 14,
+                fontFamily: 'VarelaRound',
+              ),
+              selectedIconTheme: IconThemeData(
+                color: Theme.of(context).colorScheme.onPrimary,
+                size: 18,
+              ),
+              unselectedIconTheme: IconThemeData(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                size: 18,
+              ),
+              destinations: destinations,
+              trailing: widget.isLargeScreen
+                  ? _index == 0
+                      ? null
+                      : ResumeDownload(extended: extended)
+                  : ResumeDownload(extended: extended),
             ),
-          ),
-        ],
+            Expanded(
+              child: Container(
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                  ),
+                  color: Colors.white,
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                  ),
+                  child: PageTransitionSwitcher(
+                    duration: const Duration(seconds: 1),
+                    transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
+                      return SharedAxisTransition(
+                        animation: primaryAnimation,
+                        secondaryAnimation: secondaryAnimation,
+                        transitionType: SharedAxisTransitionType.horizontal,
+                        child: child,
+                      );
+                    },
+                    child: screens[_index],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
