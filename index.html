@@ -1,0 +1,395 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+<head>
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
+    <style type="text/css">
+
+      body {
+       background-color: #FAFAFA; 
+      }
+
+      .btn {
+        display: inline-flex; 
+        align-items: center;
+        gap: 4px;
+        margin: 1px;
+        /* clockwise: top | right | bottom | left */
+        padding: 4px 10px 4px 8px;
+        text-decoration: none;
+        color: #303030;
+        background-color: #BBDEFB;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+        -moz-transition: background-color 0.2s;
+        -webkit-transition: background-color 0.2s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        vertical-align: middle;
+        cursor: pointer;
+      }
+      .btn .material-icons {
+        font-size: 1.2em;
+        text-decoration: none;
+      }
+      .btn:hover {
+        background-color: #316CAD;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        -moz-transition: background-color 0.2s;
+        -webkit-transition: background-color 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+      }
+
+      /* Make button don't show underline after clicking */
+      .btn:focus,
+      .btn:active {
+        color: #303030;
+        text-decoration: none;
+      }
+
+      .btn:focus:hover, .btn:active:hover {
+        background-color: #316CAD;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        -moz-transition: background-color 0.2s;
+        -webkit-transition: background-color 0.2s;
+      }
+
+      .btn-publication {
+        background-color: #C8E6C9;
+        color: #303030;
+      }
+
+      .btn-publication:hover {
+        background-color: #2E7D32;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        -moz-transition: background-color 0.2s;
+        -webkit-transition: background-color 0.2s;
+      }
+
+      .btn-publication:focus,
+      .btn-publication:active {
+        color: #303030;
+        text-decoration: none;
+      }
+
+      .btn-publication:focus:hover, .btn-publication:active:hover {
+        background-color: #2E7D32;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        -moz-transition: background-color 0.2s;
+        -webkit-transition: background-color 0.2s;
+      }
+
+      .news-item-title {
+        font-weight: 600;
+        /* color: #316CAD; */
+      }
+
+      .news-date {
+        font-weight: 500;
+        color: #316CAD;
+      }
+
+      .news-highlight-red {
+        font-weight: 600;
+        color: #EF5350;
+      }
+
+
+      .highlight-publication {
+        background-color: #E8F6E9;
+      }
+
+      .description {
+        display: block;
+        margin: 4px 0;       
+        color: #555;
+        font-style: italic;
+        padding: 4px 0;
+      }
+
+      .bibtex {
+        max-height: 0;             
+        opacity: 0;
+        overflow-x: auto;
+        margin-top: 0;
+        padding: 0 4px;     
+        background-color: #fff3e0;
+        border-left: 4px solid #ffb300;
+        font-family: monospace;
+        white-space: pre-wrap;
+        font-size: small;
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .bibtex.show {
+        max-height: 200px;        
+        opacity: 1;
+        margin-top: 4px;
+        padding: 4px;            
+      }
+
+    a {
+      color: #1E88E5;
+      text-decoration: none;
+    }
+
+    a:focus,
+    a:hover {
+      color: #316CAD;
+      text-decoration: underline;
+    }
+
+    p, 
+    td, span {
+      text-align: justify;
+    }
+
+    body,
+    td,
+    th,
+    tr,
+    p,
+    a {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 14px
+    }
+
+    strong {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    heading {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 22px;
+    }
+
+    papertitle {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #316CAD;
+    }
+
+    name {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 32px;
+    }
+
+    .one {
+      width: 160px;
+      height: 160px;
+      position: relative;
+    }
+
+    .two {
+      width: 160px;
+      height: 160px;
+      position: absolute;
+      transition: opacity .2s ease-in-out;
+      -moz-transition: opacity .2s ease-in-out;
+      -webkit-transition: opacity .2s ease-in-out;
+    }
+
+    .fade {
+      transition: opacity .2s ease-in-out;
+      -moz-transition: opacity .2s ease-in-out;
+      -webkit-transition: opacity .2s ease-in-out;
+    }
+
+    .publications-table tr td img {
+      max-width: 150px;
+      max-height: 125px;
+    } 
+
+    table tr td img {
+      vertical-align: middle;
+      border-radius: 8%;
+      transition: border-radius 0.2s ease-in-out;
+      -moz-transition: border-radius 0.2s ease-in-out;
+      -webkit-transition: border-radius 0.2s ease-in-out;
+    }
+    table tr td img:hover {
+      border-radius: 12%;
+      vertical-align: middle;
+      transition: border-radius 0.2s ease-in-out;
+      -moz-transition: border-radius 0.2s ease-in-out;
+      -webkit-transition: border-radius 0.2s ease-in-out;
+    }
+
+    /* Add space between publications */
+    .publications-table {
+      margin-top: 20px;
+      border-collapse: separate;
+      border-spacing: 0 20px; /* vertical spacing */
+    }
+
+    .modal {
+      display: none;                  /* hidden by default */
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);    /* dark overlay */
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      position: relative;
+      background: #000;
+      padding: 0;
+      border-radius: 8px;
+      max-width: 50vw;      /* shrink the width */
+      max-height: 50vh;     /* constrain height */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      animation: dropIn 0.3s ease-out;
+      overflow: hidden;     /* clip any overflow */
+    }
+    
+    /* 2) Make the video fill the modal nicely */
+    .modal-content video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* 3) Style the close button as a rounded square */
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;          /* center the “×” vertically */
+      text-align: center;         /* center horizontally */
+      font-size: 20px;
+      color: #fff;
+      background-color: rgba(0,0,0,0.8);
+      border-radius: 6px;         /* rounded corners */
+      cursor: pointer;
+      z-index: 10;
+      transition: background-color 0.2s;
+    }
+    .close-btn:hover {
+      background-color: rgba(0,0,0,1);
+    }
+    
+    /* Simple “drop from top” animation */
+    @keyframes dropIn {
+      from { transform: translateY(-30px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+  </style>
+   
+  <link rel="icon" type="image/jpg" href="images/logo.png">
+    <title>Aditya Taparia</title>
+   
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet'    
+    type='text/css'>
+</head>
+
+<body>
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <video id="modalVideo" controls>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    </div>
+
+  <br/>
+    <table width="900" border="0" align="center" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>
+                <div id="intro-content"></div> <br/> 
+                <div id="news-content"></div> <br/> <br/>
+                <div id="publications-content"></div>
+            </td>
+        </tr>
+      </table>
+    
+    <table width="100%" cellspacing="0" cellpadding="10" border="0" align="center">
+        <tbody>
+            <tr>
+                <td>
+                    <br>
+                    <br>
+                    <!-- <p align="center">
+                        <font size="2">
+                            Website template from <a href="https://github.com/jonbarron/jonbarron_website">here.</a>
+                          </font>
+                      </p> -->
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+
+   
+  <script>
+    async function loadContent() {
+      const introResponse = await fetch('pages/intro.html');
+      const introHtml = await introResponse.text();
+      document.getElementById('intro-content').innerHTML = introHtml;
+
+      // Fetch and load news content
+      const newsResponse = await fetch('pages/news.html');
+      const newsHtml = await newsResponse.text();
+      document.getElementById('news-content').innerHTML = newsHtml;
+
+      const publicationsResponse = await fetch('pages/publication.html');
+      const publicationsHtml = await publicationsResponse.text();
+      document.getElementById('publications-content').innerHTML = publicationsHtml;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadContent);
+  </script>
+
+  <script>
+    function toggleBib(id) {
+      document.getElementById(id).classList.toggle('show');
+    }
+  </script>
+
+  <script>
+    const modal = document.getElementById('videoModal');
+    const videoEl = document.getElementById('modalVideo');
+
+    function openModal(src) {
+      videoEl.querySelector('source').src = src;
+      videoEl.load();
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      videoEl.pause();
+      modal.style.display = 'none';
+    }
+
+    // close if user clicks outside the content
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+</body>
+
+</html>
