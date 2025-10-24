@@ -1,357 +1,127 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
-
 <head>
-   
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-    <style type="text/css">
-
-      body {
-       background-color: #FAFAFA; 
-      }
-
-      .btn {
-        display: inline-flex; 
-        align-items: center;
-        gap: 4px;
-        margin: 1px;
-        /* clockwise: top | right | bottom | left */
-        padding: 4px 10px 4px 8px;
-        text-decoration: none;
-        color: #303030;
-        background-color: #BBDEFB;
-        border-radius: 20px;
-        font-weight: 500;
-        transition: background-color 0.2s;
-        -moz-transition: background-color 0.2s;
-        -webkit-transition: background-color 0.2s;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        vertical-align: middle;
-        cursor: pointer;
-      }
-      .btn .material-icons {
-        font-size: 1.2em;
-        text-decoration: none;
-      }
-      .btn:hover {
-        background-color: #316CAD;
-        color: #fff;
-        text-decoration: none;
-        transition: background-color 0.2s;
-        -moz-transition: background-color 0.2s;
-        -webkit-transition: background-color 0.2s;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-      }
-
-      /* Make button don't show underline after clicking */
-      .btn:focus,
-      .btn:active {
-        color: #303030;
-        text-decoration: none;
-      }
-
-      .btn:focus:hover, .btn:active:hover {
-        background-color: #316CAD;
-        color: #fff;
-        text-decoration: none;
-        transition: background-color 0.2s;
-        -moz-transition: background-color 0.2s;
-        -webkit-transition: background-color 0.2s;
-      }
-
-      .btn-publication {
-        background-color: #C8E6C9;
-        color: #303030;
-      }
-
-      .btn-publication:hover {
-        background-color: #2E7D32;
-        color: #fff;
-        text-decoration: none;
-        transition: background-color 0.2s;
-        -moz-transition: background-color 0.2s;
-        -webkit-transition: background-color 0.2s;
-      }
-
-      .btn-publication:focus,
-      .btn-publication:active {
-        color: #303030;
-        text-decoration: none;
-      }
-
-      .btn-publication:focus:hover, .btn-publication:active:hover {
-        background-color: #2E7D32;
-        color: #fff;
-        text-decoration: none;
-        transition: background-color 0.2s;
-        -moz-transition: background-color 0.2s;
-        -webkit-transition: background-color 0.2s;
-      }
-
-      .news-item-title {
-        font-weight: 600;
-        /* color: #316CAD; */
-      }
-
-      .news-date {
-        font-weight: 500;
-        color: #316CAD;
-      }
-
-      .news-highlight-red {
-        font-weight: 600;
-        color: #EF5350;
-      }
-
-
-      .highlight-publication {
-        background-color: #E8F6E9;
-      }
-
-      .description {
-        display: block;
-        margin: 4px 0;       
-        color: #555;
-        font-style: italic;
-        padding: 4px 0;
-      }
-
-      .bibtex {
-        max-height: 0;             
-        opacity: 0;
-        overflow-x: auto;
-        margin-top: 0;
-        padding: 0 4px;     
-        background-color: #fff3e0;
-        border-left: 4px solid #ffb300;
-        font-family: monospace;
-        white-space: pre-wrap;
-        font-size: small;
-        transition: max-height 0.5s ease, opacity 0.5s ease;
-
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      }
-
-      .bibtex.show {
-        max-height: 200px;        
-        opacity: 1;
-        margin-top: 4px;
-        padding: 4px;            
-      }
-
-    a {
-      color: #1E88E5;
-      text-decoration: none;
-    }
-
-    a:focus,
-    a:hover {
-      color: #316CAD;
-      text-decoration: underline;
-    }
-
-    p, 
-    td, span {
-      text-align: justify;
-    }
-
-    body,
-    td,
-    th,
-    tr,
-    p,
-    a {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px
-    }
-
-    strong {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-    }
-
-    heading {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 22px;
-    }
-
-    papertitle {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: #316CAD;
-    }
-
-    name {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 32px;
-    }
-
-    .one {
-      width: 160px;
-      height: 160px;
-      position: relative;
-    }
-
-    .two {
-      width: 160px;
-      height: 160px;
-      position: absolute;
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
-    }
-
-    .fade {
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
-    }
-
-    .publications-table tr td img {
-      max-width: 150px;
-      max-height: 125px;
-    } 
-
-    table tr td img {
-      vertical-align: middle;
-      border-radius: 8%;
-      transition: border-radius 0.2s ease-in-out;
-      -moz-transition: border-radius 0.2s ease-in-out;
-      -webkit-transition: border-radius 0.2s ease-in-out;
-    }
-    table tr td img:hover {
-      border-radius: 12%;
-      vertical-align: middle;
-      transition: border-radius 0.2s ease-in-out;
-      -moz-transition: border-radius 0.2s ease-in-out;
-      -webkit-transition: border-radius 0.2s ease-in-out;
-    }
-
-    /* Add space between publications */
-    .publications-table {
-      margin-top: 20px;
-      border-collapse: separate;
-      border-spacing: 0 20px; /* vertical spacing */
-    }
-
-    .modal {
-      display: none;                  /* hidden by default */
-      position: fixed;
-      z-index: 1000;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);    /* dark overlay */
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .modal-content {
-      position: relative;
-      background: #000;
-      padding: 0;
-      border-radius: 8px;
-      max-width: 50vw;      /* shrink the width */
-      max-height: 50vh;     /* constrain height */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      animation: dropIn 0.3s ease-out;
-      overflow: hidden;     /* clip any overflow */
-    }
-    
-    /* 2) Make the video fill the modal nicely */
-    .modal-content video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    /* 3) Style the close button as a rounded square */
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 32px;
-      height: 32px;
-      line-height: 32px;          /* center the “×” vertically */
-      text-align: center;         /* center horizontally */
-      font-size: 20px;
-      color: #fff;
-      background-color: rgba(0,0,0,0.8);
-      border-radius: 6px;         /* rounded corners */
-      cursor: pointer;
-      z-index: 10;
-      transition: background-color 0.2s;
-    }
-    .close-btn:hover {
-      background-color: rgba(0,0,0,1);
-    }
-    
-    /* Simple “drop from top” animation */
-    @keyframes dropIn {
-      from { transform: translateY(-30px); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-  </style>
-   
-  <link rel="icon" type="image/jpg" href="images/logo.png">
-    <title>Aditya Taparia</title>
-   
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007)">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
-   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet'    
-    type='text/css'>
+  <link rel="icon" type="image/jpg" href="images/logo.png">
+  <title>Sreevishakh Vasudevan</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #FAFAFA;
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    .site-center { width: 50%; margin: 24px auto 60px; padding: 0 20px; box-sizing: border-box; }
+
+    /* make tables/images inside content use full width but do not stretch images */
+    .site-center table, .site-center .publications-table { width: 100%; box-sizing: border-box; }
+    .site-center img { max-width: 100%; height: auto; display: inline-block; box-sizing: border-box; }
+
+    .btn { display:inline-flex; align-items:center; gap:6px; margin:1px 4px; padding:4px 10px; text-decoration:none; color:#303030; background:#BBDEFB; border-radius:20px; font-weight:500; transition:background-color .18s; box-shadow:0 2px 4px rgba(0,0,0,.06); cursor:pointer; }
+    .btn:hover { background:#316CAD; color:#fff; }
+    .btn-publication { background:#C8E6C9; } .btn-publication:hover { background:#2E7D32; color:#fff; }
+
+    .news-item-title { font-weight:600; } .news-date { font-weight:500; color:#316CAD; }
+    .description { color:#555; font-style:italic; margin:6px 0; }
+
+    .bibtex { max-height:0; opacity:0; overflow-x:auto; margin-top:0; padding:0 4px; background:#fff3e0; border-left:4px solid #ffb300; font-family:monospace; white-space:pre-wrap; font-size:small; transition:max-height .45s ease, opacity .45s ease; }
+    .bibtex.show { max-height:240px; opacity:1; padding:8px; margin-top:8px; }
+
+    .publications-table { margin-top:14px; border-collapse:separate; border-spacing:0 20px; }
+    .publications-table img { max-width:120px; height:auto; vertical-align:middle; border-radius:8%; }
+    table tr td img { vertical-align:middle; border-radius:8%; transition:border-radius .2s; }
+    table tr td img:hover { border-radius:12%; }
+
+    .modal { display:none; position:fixed; z-index:1000; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
+    .modal-content { position:relative; background:#000; padding:0; border-radius:8px; max-width:50vw; max-height:50vh; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.4); }
+    .modal-content video { width:100%; height:auto; display:block; }
+    .close-btn { position:absolute; top:12px; right:12px; width:32px; height:32px; line-height:32px; text-align:center; font-size:20px; color:#fff; background:rgba(0,0,0,.8); border-radius:6px; cursor:pointer; z-index:10; }
+    .close-btn:hover { background:rgba(0,0,0,1); }
+
+    a { color:#1E88E5; text-decoration:none; } a:hover, a:focus { color:#316CAD; text-decoration:underline; }
+
+    /* ------------------ Intro layout specific (strong rules) ------------------ */
+
+    /* ensure the intro area table occupies full width of .site-center */
+    #intro-content table { width: 100% !important; border-collapse: collapse; margin: 0; }
+
+    /* left column should take remaining space, right column fixed */
+    #intro-content table td:first-child { vertical-align: top !important; width: calc(100% - 220px) !important; padding-right: 12px !important; }
+    #intro-content table td:nth-child(2) { width: 220px !important; vertical-align: middle !important; padding-left: 12px !important; }
+
+    /* profile photo: wide, natural aspect, rounded, use object-fit for nice crop */
+    #intro-content img.profile-photo,
+    #intro-content td:nth-child(2) img,
+    #intro-content img[alt*="Sreevishakh"] {
+      width: 250px !important;
+      height: auto !important;
+      max-width: none !important;
+      border-radius: 12px !important;
+      display: block !important;
+      object-fit: cover !important;
+      margin: 0 0 8px 0 !important;
+    }
+
+    /* centered title and tightened paragraphs for Som-like look */
+    #intro-content h1 { text-align:center; font-size:28px; margin:6px 0 12px; font-weight:700; }
+    #intro-content p { line-height:1.35; margin:0 0 12px; }
+
+    /* responsive: stack columns and shrink image */
+    @media (max-width: 880px) {
+      .site-center { width: 90%; padding: 0 10px; }
+      #intro-content table, #intro-content table tr, #intro-content table td { display: block !important; width: 100% !important; }
+      #intro-content table td:first-child { width: 100% !important; padding-right: 0 !important; }
+      #intro-content table td:nth-child(2) { width: 100% !important; padding-left: 0 !important; margin-bottom: 10px !important; }
+      #intro-content img.profile-photo, #intro-content td:nth-child(2) img { width: 120px !important; margin: 0 auto 14px !important; float: none !important; display: block !important; }
+      #intro-content h1 { font-size: 24px; }
+    }
+
+  </style>
 </head>
 
 <body>
   <div id="videoModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
-      <video id="modalVideo" controls>
-        <source src="" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <div id="modalMedia"></div>
     </div>
-    </div>
+  </div>
 
-  <br/>
-    <table width="900" border="0" align="center" cellspacing="0" cellpadding="0">
+  <div class="site-center">
+    <table width="100%" border="0" align="center" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+          <section class="site-section" id="intro-content"></section>
+          <section class="site-section" id="news-content"></section>
+          <section class="site-section" id="publications-content"></section>
+          <section class="site-section" id="experience-content"></section>
+        </td>
+      </tr>
+    </table>
+
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+      <tbody>
         <tr>
-            <td>
-                <div id="intro-content"></div> <br/> 
-                <div id="news-content"></div> <br/> <br/>
-                <div id="publications-content"></div>
-            </td>
+          <td><br><br></td>
         </tr>
-      </table>
-    
-    <table width="100%" cellspacing="0" cellpadding="10" border="0" align="center">
-        <tbody>
-            <tr>
-                <td>
-                    <br>
-                    <br>
-                    <!-- <p align="center">
-                        <font size="2">
-                            Website template from <a href="https://github.com/jonbarron/jonbarron_website">here.</a>
-                          </font>
-                      </p> -->
-                  </td>
-              </tr>
-          </tbody>
-        </table>
+      </tbody>
+    </table>
+  </div>
 
-   
   <script>
     async function loadContent() {
       const introResponse = await fetch('pages/intro.html');
       const introHtml = await introResponse.text();
       document.getElementById('intro-content').innerHTML = introHtml;
 
-      // Fetch and load news content
       const newsResponse = await fetch('pages/news.html');
       const newsHtml = await newsResponse.text();
       document.getElementById('news-content').innerHTML = newsHtml;
@@ -359,37 +129,67 @@
       const publicationsResponse = await fetch('pages/publication.html');
       const publicationsHtml = await publicationsResponse.text();
       document.getElementById('publications-content').innerHTML = publicationsHtml;
-    }
 
+      const experienceResponse = await fetch('pages/experience.html');
+      const experienceHtml = await experienceResponse.text();
+      document.getElementById('experience-content').innerHTML = experienceHtml;
+    }
     document.addEventListener('DOMContentLoaded', loadContent);
-  </script>
 
-  <script>
-    function toggleBib(id) {
-      document.getElementById(id).classList.toggle('show');
-    }
-  </script>
+    function toggleBib(id) { document.getElementById(id).classList.toggle('show'); }
 
-  <script>
     const modal = document.getElementById('videoModal');
-    const videoEl = document.getElementById('modalVideo');
+    const modalMedia = document.getElementById('modalMedia');
 
     function openModal(src) {
-      videoEl.querySelector('source').src = src;
-      videoEl.load();
+      modalMedia.innerHTML = '';
+      if (typeof src === 'string' && (src.startsWith('youtube:') || src.includes('youtube.com') || src.includes('youtu.be'))) {
+        let videoId = '';
+        if (src.startsWith('youtube:')) {
+          videoId = src.split(':')[1];
+        } else {
+          try {
+            const url = new URL(src, window.location.href);
+            if (url.hostname.includes('youtu.be')) {
+              videoId = url.pathname.slice(1);
+            } else {
+              videoId = url.searchParams.get('v') || '';
+            }
+          } catch (err) { videoId = ''; }
+        }
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0';
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        modalMedia.appendChild(iframe);
+        modal.style.display = 'flex';
+        return;
+      }
+      const video = document.createElement('video');
+      video.controls = true;
+      video.style.width = '100%';
+      const source = document.createElement('source');
+      source.src = src;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      modalMedia.appendChild(video);
+      video.load();
       modal.style.display = 'flex';
     }
 
     function closeModal() {
-      videoEl.pause();
+      const video = modalMedia.querySelector('video');
+      if (video) {
+        try { video.pause(); } catch (e) {}
+        video.removeAttribute('src');
+        video.load && video.load();
+      }
+      modalMedia.innerHTML = '';
       modal.style.display = 'none';
     }
-
-    // close if user clicks outside the content
-    modal.addEventListener('click', e => {
-      if (e.target === modal) closeModal();
-    });
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   </script>
 </body>
-
 </html>
