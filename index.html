@@ -84,6 +84,42 @@
       #intro-content h1 { font-size: 24px; }
     }
 
+    /* Make company logo + name look like the standard blue links */
+.company-link,
+.company-link:link,
+.company-link:visited {
+  color: #0b63ce;            /* blue (replace with your site's link blue) */
+  text-decoration: none;     /* remove default underline (we add it on hover) */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  vertical-align: top;
+  font-weight: 500;          /* optional: match the weight of other links */
+}
+
+/* Underline on hover/focus for accessibility */
+.company-link:hover,
+.company-link:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Keep the logo small and aligned */
+.company-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* If your site has a global rule that forces a different color,
+   this more specific selector will override it */
+.section-body h4 .company-link,
+.section-body h4 .company-link:visited {
+  color: #0b63ce !important;
+}
+
+
   </style>
 </head>
 
